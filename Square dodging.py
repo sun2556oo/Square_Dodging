@@ -52,7 +52,7 @@ while game_running:
 		y_pos=-50
 		enemy_list.append([x_pos,y_pos])
 	score=update_enemy_positions(enemy_list,score)
-	speed=score/40+10
+	speed=score+10/40
 	for enemy_position in enemy_list:
 		pygame.draw.rect(screen,(0,0,255),(enemy_position[0],enemy_position[1],50,50))
 	pygame.draw.rect(screen,(255,0,0),(player_position[0],player_position[1],50,50))
