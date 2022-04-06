@@ -2,7 +2,7 @@ import pygame
 import random
 import sys
 pygame.init()
-pygame.display.set_caption("Square dodging")
+pygame.display.set_caption("Square Dodging")
 pygame.display.set_icon(pygame.image.load('icon.png'))
 game_running=True
 game_start=False
@@ -40,7 +40,6 @@ def collision_check(enemy_list,player_position):
 #Main loop
 while game_running:
 	pygame.time.Clock().tick(60)
-	screen.fill((0,0,0))
 	for event in pygame.event.get():
 		if event.type==pygame.QUIT:
 			sys.exit()
@@ -64,15 +63,18 @@ while game_running:
 		y_pos=-50
 		enemy_list.append([x_pos,y_pos])
 	score=update_enemy_positions(enemy_list,score)
-	speed=score+10/40
-	for enemy_position in enemy_list:
-		pygame.draw.rect(screen,(0,0,255),(enemy_position[0],enemy_position[1],50,50))
+	speed=score/40+10
 	
 	#Graphic
+	screen.fill((0,0,0))
+	for enemy_position in enemy_list:
+		pygame.draw.rect(screen,(0,0,255),(enemy_position[0],enemy_position[1],50,50))
 	pygame.draw.rect(screen,(255,0,0),(player_position[0],player_position[1],50,50))
 	pygame.draw.rect(screen,(0,0,0),([0,650],(700,240)))
-	screen.blit(pygame.font.SysFont("monospace",35).render("Score:"+str(score),1,[255,255,0]),(475,655))
+	pygame.draw.rect(screen,(0,255,0),([0,650],(700,2)))
+	pygame.draw.rect(screen,(0,0,0),([0,650],(700,0)))
 	pygame.draw.rect(screen,(0,255,0),([0,652],(700,0)))
+	screen.blit(pygame.font.SysFont("monospace",35).render("Score:"+str(score),1,[255,255,255]),(25,655))
 	
 	#Game not start
 	if not game_start:
