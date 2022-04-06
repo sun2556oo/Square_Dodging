@@ -2,7 +2,7 @@ import pygame
 import random
 import sys
 pygame.init()
-pygame.display.set_caption("Square dodging")
+pygame.display.set_caption("Square Dodging")
 pygame.display.set_icon(pygame.image.load('icon.png'))
 game_running=True
 game_start=False
